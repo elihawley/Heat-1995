@@ -20,17 +20,14 @@ let config = {
     render: {
         pixelArt: true,
     },
-    width: 400,
-    height: 400,
+    width: 800,
+    height: 800,
     physics: {
         default: 'arcade',
     },
-    scene: [ Menu, RestaurantInstructions, RestaurantPlay, BankInstructions, BankPlay, AirstripInstructions, AirstripPlay, Credits ],
+    scene: [ Menu, RestaurantInstructions, RestaurantPlay, HeistInstructions, HeistPlay, AirstripInstructions, AirstripPlay, Credits ],
 };
 
 let game = new Phaser.Game(config);
 
-let borderUISize = game.config.height / 15;
-let borderPadding = borderUISize / 3;
-
-let cursors, keyG, keyR, keyC;
+let cursors, keyR, keyC;

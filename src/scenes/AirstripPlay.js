@@ -1,6 +1,12 @@
-class Overworld extends Phaser.Scene {
+// 3. Shootout at airstrip
+//     - Quiet and tense, Changing lighting from airplanes
+//     - Light: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/point-light/
+//     - Physics and Particles: https://github.com/nathanaltice/PartyCoolFX/blob/master/src/scenes/ArcadeCollide.js
+//     - Tilemap https://github.com/elihawley/Tilemap-Tutorial/blob/main/src/Overworld.js
+
+class AirstripPlay extends Phaser.Scene {
     constructor() {
-        super('overworldScene');
+        super('airstripPlayScene');
 
         this.VEL = 100;
     }

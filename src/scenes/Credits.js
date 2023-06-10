@@ -3,27 +3,24 @@ class Credits extends Phaser.Scene {
         super('creditsScene');
     }
 
+    preload() {
+        this.load.path = './assets/';
+        this.load.audio('sfx_select', 'sfx/select.wav');
+
+        this.load.bitmapFont('gem_font', 'font/gem.png', 'font/gem.xml');
+    }
+
     create() {
-        let menuConfig = {
-            fontFamily: 'Georgia',
-            fontSize: '12px',
-            backgroundColor: 'brown',
-            color: 'white',
-            align: 'right',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0,
-        };
 
+        const centerX = game.config.width / 2;
+        const centerY = game.config.height / 2;
 
-        this.add.text(game.config.width / 2, borderUISize * 2 + borderPadding, 'CREDITS', menuConfig).setOrigin(.5);
-        this.add.text(game.config.width / 2, borderUISize * 4 + borderPadding, 'Press (C) to return', Object.assign({}, menuConfig, {backgroundColor: '#00FF00', color: '#000'})).setOrigin(.5);
-        this.add.text(game.config.width / 2, borderUISize * 6 + borderPadding*4, 'Developer: Elia Hawley', menuConfig).setOrigin(.5);
-        this.add.text(game.config.width / 2, borderUISize * 8 + borderPadding*4, 'Assets: Asesprite', menuConfig).setOrigin(.5);
-        this.add.text(game.config.width / 2, borderUISize * 10 + borderPadding*4, 'Music: JDSherbert', menuConfig).setOrigin(.5);
-        this.add.text(game.config.width / 2, borderUISize * 12 + borderPadding*4, 'SFX: jsfxr', menuConfig).setOrigin(.5);
+        this.add.bitmapText(centerX, centerY - 64, 'gem_font', 'CREDITS', 32).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY - 32, 'gem_font', 'Press (C) to return', 32).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY, 'gem_font', 'Developer: Elia Hawley', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 32, 'gem_font', 'Images: ShatteredReality, Asesprite, GIMP', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 64, 'gem_font', 'Music: LunaLucid', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 96, 'gem_font', 'SFX: jsfxr, Audacity', 16).setOrigin(0.5);
 
         keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C)
     }
