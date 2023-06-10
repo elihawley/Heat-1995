@@ -1,4 +1,5 @@
 // 2. Shootout outside of bank
+//     - Randomly spawned enemy
 //     - One shot; distracted by pressure
 //         - Camera Effects: https://github.com/nathanaltice/CameraLucida/blob/master/src/scenes/FourViews.js
 //             - camera fadein/fadeout and slight wobble/shake for stress
