@@ -23,8 +23,8 @@ class AirstripPlay extends Phaser.Scene {
         // load images
         this.load.image('tilesetImage', 'img/city-tileset.png');
         this.load.tilemapTiledJSON('airstripTilemapJSON', 'json/airstrip-tilemap.json');
-        this.load.spritesheet('cop', 'img/cop-spritesheet.png', { frameWidth: 34, frameHeight: 34 })
-        this.load.spritesheet('robber', 'img/robber-spritesheet.png', { frameWidth: 34, frameHeight: 34 })
+        this.load.spritesheet('cop', 'img/cop-spritesheet.png', { frameWidth: 32, frameHeight: 32 })
+        this.load.spritesheet('robber', 'img/robber-spritesheet.png', { frameWidth: 32, frameHeight: 32 })
     }
 
     create() {
