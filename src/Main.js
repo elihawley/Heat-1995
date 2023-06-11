@@ -31,4 +31,9 @@ let config = {
 
 let game = new Phaser.Game(config);
 
+const CENTER_X = game.config.width / 2
+const CENTER_Y = game.config.height / 2
+const W = game.config.width
+const H = game.config.height
+
 let cursors, keyR, keyC;
