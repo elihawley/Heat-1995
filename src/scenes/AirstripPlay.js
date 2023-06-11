@@ -1,6 +1,15 @@
+// 3. Shootout at airstrip
+//     - Quiet and tense, Changing lighting from airplanes
+//     - Randomly spawned enemy
+//     - Light: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/point-light/
+//     - Physics and Particles: https://github.com/nathanaltice/PartyCoolFX/blob/master/src/scenes/ArcadeCollide.js
+//     - Tilemap https://github.com/elihawley/Tilemap-Tutorial/blob/main/src/Overworld.js
+
 class AirstripPlay extends Phaser.Scene {
-    constructor () {
-        super('playScene');
+    constructor() {
+        super('airstripPlayScene');
+
+        this.VEL = 100;
     }
 
     preload() {
@@ -53,5 +62,18 @@ class AirstripPlay extends Phaser.Scene {
                     }
                 }
         }
+
+        // if (keyLEFT.isDown && this.x >= borderUISize + this.width){ // && this.checkCollision(this, )) { missing collision check between characters & box
+        //     this.x -= this.moveSpeed;
+        // } else if (keyRIGHT.isDown && this.x <= game.config.width - borderUISize - this.width) {
+        //     this.x += this.moveSpeed;
+        // }
+
+        // // move up and down
+        // if (keyUP.isDown && this.y >= borderUISize + this.height) {
+        //     this.y += this.moveSpeed;
+        // } else if (keyDOWN.isDown && this.y >= this.height) {
+        //     this.y -= this.moveSpeed;
+        // }
     }
 }

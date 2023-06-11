@@ -1,44 +1,54 @@
 class AirstripInstructions extends Phaser.Scene {
     constructor() {
-        super('menuScene');
+        super("airstripInstructionsScene");
     }
 
     preload() {
-        this.load.audio('sfx_select', './assets/select.wav');
-        this.load.audio('sfx_gameover', './assets/gameover.wav');
-        this.load.audio('sfx_changegravity', './assets/changegravity.wav');
-        this.load.audio('sfx_music', './assets/backgroundmusic.wav');
+        // load assets
+        this.load.path = "./assets/";
+
+        // load images
+        this.load.image('tilesetImage', 'city-tileset.png');
+        this.load.tilemapTiledJSON('tilemapJSON', 'json/airstrip-tilemap.json');
+        this.load.spritesheet('cop', 'cop-spritesheet.png', { frameWidth: 16, frameHeight: 16 })
+        this.load.spritesheet('robber', 'robber-spritesheet.png', { frameWidth: 16, frameHeight: 16 })
+
+        // load sounds
+        this.load.audio('bgm_again', 'bgm/Again.mp3');
+        this.load.audio('sfx_select', 'sfx/select.wav');
+        this.load.audio('sfx_shoot', 'sfx/shoot.wav');
+        this.load.audio('sfx_hit', 'sfx/hit.wav');
+        this.load.audio('sfx_airplane', 'sfx/airplane.wav');
+        this.load.audio('sfx_gameover', 'sfx/gameover.wav');
+
+        // load bitmap font
+        this.load.bitmapFont('gem_font', 'font/gem.png', 'font/gem.xml');
     }
 
     create() {
-        let menuConfig = {
-            fontFamily: 'Georgia',
-            fontSize: '18px',
-            color: 'white',
-            align: 'right',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0,
-        };
+        this.bgm = this.sound.add("bgm_again", {volume: 1, loop: true});
+        // this.bgm.play();
 
+        // add title text
+        this.add.bitmapText(centerX, centerY - 64, 'gem_font', 'AIRSTRIP SCENE', 32).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY - 32, 'gem_font', 'Fight in the darkness', 32).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY, 'gem_font', 'Use arrow keys to move and SPACE to shoot', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 32, 'gem_font', 'Press SPACE to start', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 64, 'gem_font', 'Press LEFT to return', 16).setOrigin(0.5);
 
-        let t = this.add.text(game.config.width / 2, game.config.height / 3 - borderUISize * 2 - borderPadding * 2, 'THE AIRSTRIP', menuConfig).setOrigin(.5);
-        let t1 = this.add.text(game.config.width / 2, game.config.height / 2, 'Arrow Keys to move, good luck', menuConfig).setOrigin(.5);
-        menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000';
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize * 2 + borderPadding, 'Press P to begin', menuConfig).setOrigin(.5);
-        
-        keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+        // create input
+        cursors = this.input.keyboard.createCursorKeys();
     }
 
     update() {
-        if (Phaser.Input.Keyboard.JustDown(keyP)) {
-            this.game.settings = {
-                speedMultiplier: 1
-             };
-            this.scene.start('playScene');
+        if(Phaser.Input.Keyboard.JustDown(cursors.space)) {
+            this.sound.play('sfx_select');
+            this.scene.start("airstripPlayScene");
+        }
+        else if(Phaser.Input.Keyboard.JustDown(cursors.left)) {
+            // this.bgm.stop();
+            this.sound.play('sfx_select');
+            this.scene.start("menuScene");
         }
     }
 }

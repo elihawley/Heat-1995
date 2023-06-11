@@ -4,60 +4,49 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
-        this.load.audio('sfx_select', './assets/select.wav');
-        this.load.audio('sfx_gameover', './assets/gameover.wav');
-        this.load.audio('sfx_changegravity', './assets/changegravity.wav');
-        this.load.audio('sfx_music', './assets/backgroundmusic.wav');
+        this.load.path = './assets/';
+        this.load.audio('bgm_dubious', 'bgm/Dubious.mp3');
+        this.load.audio('sfx_select', 'sfx/select.wav');
+        this.load.audio('sfx_gameover', 'sfx/gameover.wav');
+
+        this.load.bitmapFont('gem_font', 'font/gem.png', 'font/gem.xml');
     }
 
     create() {
-        let menuConfig = {
-            fontFamily: 'Georgia',
-            fontSize: '18px',
-            backgroundColor: 'brown',
-            color: 'white',
-            align: 'right',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0,
-        };
+        this.bgm = this.sound.add("bgm_dubious", {volume: 1, loop: true});
+        // this.bgm.play();
 
+        const centerX = game.config.width / 2;
+        const centerY = game.config.height / 2;
 
-        let t = this.add.text(game.config.width / 2, game.config.height / 3 - borderUISize * 2 - borderPadding * 2, 'GRAVITY RUNNER', menuConfig).setOrigin(.5);
-        let t1 = this.add.text(game.config.width / 2, game.config.height / 2, 'Use (G) to change gravity. Avoid the bats!', menuConfig).setOrigin(.5);
-        menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000';
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize * 2 + borderPadding, 'Press <- for Novice or -> for Expert', menuConfig).setOrigin(.5);
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize * 4 + borderPadding, 'Press (C) to see credits', menuConfig).setOrigin(.5);
+        this.add.bitmapText(centerX, centerY - 64, 'gem_font', 'HEAT (1995)', 32).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY - 32, 'gem_font', '(C) Credits', 32).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY, 'gem_font', '(LEFT) Restaurant Scene', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 32, 'gem_font', '(RIGHT) Heist Scene', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 64, 'gem_font', '(DOWN) Airstrip Scene', 16).setOrigin(0.5);
 
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
-        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
+        // create input
+        cursors = this.input.keyboard.createCursorKeys();
         keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C)
     }
 
     update() {
-        if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-            // easy mode
-            game.settings = {
-                speedMultiplier: 1,
-                waveDifficultyLevel: 1,
-            };
+        if (Phaser.Input.Keyboard.JustDown(cursors.left)) {
+            // this.bgm.stop();
             this.sound.play('sfx_select');
-            this.scene.start('playScene');
+            this.scene.start('restaurantInstructionsScene');
         }
-         else if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
-            // hard mode
-            game.settings = {
-                speedMultiplier: 2,
-                waveDifficultyLevel: 30,
-            };
+        else if (Phaser.Input.Keyboard.JustDown(cursors.right)) {
+            // this.bgm.stop();
             this.sound.play('sfx_select');
-            this.scene.start('playScene');
+            this.scene.start('heistInstructionsScene');
+        }
+        else if (Phaser.Input.Keyboard.JustDown(cursors.down)) {
+            // this.bgm.stop();
+            this.sound.play('sfx_select');
+            this.scene.start('airstripInstructionsScene');
         }
         else if (Phaser.Input.Keyboard.JustDown(keyC)) {
-            // credits
             this.sound.play('sfx_select');
             this.scene.start('creditsScene');
         }

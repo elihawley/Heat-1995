@@ -25,12 +25,10 @@ let config = {
     physics: {
         default: 'arcade',
     },
-    scene: [AirstripInstructions, AirstripPlay ],
+
+    scene: [ Menu, RestaurantInstructions, RestaurantPlay, HeistInstructions, HeistPlay, AirstripInstructions, AirstripPlay, Credits ],
 };
 
 let game = new Phaser.Game(config);
 
-let borderUISize = game.config.height / 15;
-let borderPadding = borderUISize / 3;
-
-let cursors, keyG, keyR, keyC, keyF, keyUP, keyDOWN, keyLEFT, keyRIGHT;
+let cursors, keyR, keyC;
