@@ -6,11 +6,11 @@
             "newSpeaker": "true",
             "choices": [
                 {
-                    "option": "",
+                    "left_option": "",
                     "gameover_text": ""
                 },
                 {
-                    "option": ""
+                    "right_option": ""
                 }
             ]
         },
