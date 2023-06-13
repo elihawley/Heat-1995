@@ -20,15 +20,13 @@ class AirstripInstructions extends Phaser.Scene {
     }
 
     create() {
-        this.bgm = this.sound.add("bgm_again", {volume: 1, loop: true});
-        // this.bgm.play();
-
         // add title text
         this.add.bitmapText(CENTER_X, CENTER_Y - 64, 'gem_font', 'AIRSTRIP SCENE', 32).setOrigin(0.5);
-        this.add.bitmapText(CENTER_X, CENTER_Y - 32, 'gem_font', 'Fight in the darkness', 32).setOrigin(0.5);
-        this.add.bitmapText(CENTER_X, CENTER_Y, 'gem_font', 'Use arrow keys to move and SPACE to shoot', 16).setOrigin(0.5);
-        this.add.bitmapText(CENTER_X, CENTER_Y + 32, 'gem_font', 'Press SPACE to start', 16).setOrigin(0.5);
-        this.add.bitmapText(CENTER_X, CENTER_Y + 64, 'gem_font', 'Press LEFT to return', 16).setOrigin(0.5);
+        this.add.bitmapText(CENTER_X, CENTER_Y, 'gem_font', 'Fight in the darkness', 32).setOrigin(0.5);
+        this.add.bitmapText(CENTER_X, CENTER_Y + 32, 'gem_font', 'Use arrow keys to move and SPACE to shoot', 16).setOrigin(0.5);
+        this.add.bitmapText(CENTER_X, CENTER_Y + 64, 'gem_font', 'Hold ESC to leave game.', 16).setOrigin(0.5);
+        this.add.bitmapText(CENTER_X, CENTER_Y + 96, 'gem_font', 'Press SPACE to start', 16).setOrigin(0.5);
+        this.add.bitmapText(CENTER_X, CENTER_Y + 128, 'gem_font', 'Press LEFT to return', 16).setOrigin(0.5);
 
         // create input
         cursors = this.input.keyboard.createCursorKeys();
@@ -40,7 +38,6 @@ class AirstripInstructions extends Phaser.Scene {
             this.scene.start("airstripPlayScene");
         }
         else if(Phaser.Input.Keyboard.JustDown(cursors.left)) {
-            // this.bgm.stop();
             this.sound.play('sfx_select');
             this.scene.start("menuScene");
         }

@@ -28,6 +28,10 @@ class AirstripPlay extends Phaser.Scene {
     }
 
     create() {
+        // Set up BGM
+        this.bgm = this.sound.add("bgm_again", {volume: 1, loop: true});
+        this.bgm.play();
+
         // Set up lighting
         this.lights.enable()
         this.lights.setAmbientColor(0x2F2F2F)
@@ -76,7 +80,9 @@ class AirstripPlay extends Phaser.Scene {
         // logic
         this.cursors = this.input.keyboard.createCursorKeys();
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
+        keyESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC)
 
+        this.cameras.main.setZoom(2);
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.cop, true, 0.25, 0.25);
 
@@ -102,12 +108,22 @@ class AirstripPlay extends Phaser.Scene {
     update() {
 
         if (this.gameOver) {
-            this.add.text(game.config.width / 2, game.config.height / 2, 'GAME OVER', this.textConfig).setOrigin(.5);
-            this.add.text(game.config.width / 2, game.config.height / 2 + 64, 'Press (R) to Restart', this.textConfig).setOrigin(.5);
+            this.sound.play('sfx_gameover', {volume: .5});
+            this.add.bitmapText(CENTER_X, CENTER_Y - 32, this.DBOX_FONT, 'GAME OVER', this.TEXT_SIZE).setOrigin(.5);
+            this.add.bitmapText(CENTER_X, CENTER_Y, this.DBOX_FONT, 'Press (R) to Restart or <- for Menu', this.TEXT_SIZE).setOrigin(.5);
+        }
+        if (this.gameOver && Phaser.Input.Keyboard.JustDown(cursors.left)) {
+            this.sound.stopAll();
+            this.scene.start("menuScene");
+        }
+        if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
+            this.sound.stopAll();
+            this.scene.restart();
         }
 
-        if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
-            this.scene.restart();
+        if (keyESC.isDown && !Phaser.Input.Keyboard.DownDuration(keyESC, 1500)) {
+            this.sound.stopAll();
+            this.scene.start("menuScene");
         }
 
         if (!this.gameOver) {
