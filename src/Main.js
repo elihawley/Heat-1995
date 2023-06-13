@@ -12,7 +12,7 @@
  *  8. Timers
  *  9. Tweening
  * Creative tilt:
- *  - TODO
+ *  - Airstrip Scene: Lighting and airplane sound that mimics the Doppler effect of a passing plane
  */
 
 let config = {
@@ -21,7 +21,7 @@ let config = {
         pixelArt: true,
     },
     width: 800,
-    height: 800,
+    height: 512,
     physics: {
         default: 'arcade',
     },
@@ -36,4 +36,4 @@ const CENTER_Y = game.config.height / 2
 const W = game.config.width
 const H = game.config.height
 
-let cursors, keyR, keyC;
+let cursors, keyR, keyC, keyESC;
