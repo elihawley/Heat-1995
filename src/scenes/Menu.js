@@ -21,9 +21,9 @@ class Menu extends Phaser.Scene {
 
         this.add.bitmapText(centerX, centerY - 64, 'gem_font', 'HEAT (1995)', 32).setOrigin(0.5);
         this.add.bitmapText(centerX, centerY - 32, 'gem_font', '(C) Credits', 32).setOrigin(0.5);
-        this.add.bitmapText(centerX, centerY, 'gem_font', '(LEFT) Restaurant Scene', 16).setOrigin(0.5);
-        this.add.bitmapText(centerX, centerY + 32, 'gem_font', '(RIGHT) Heist Scene', 16).setOrigin(0.5);
-        this.add.bitmapText(centerX, centerY + 64, 'gem_font', '(DOWN) Airstrip Scene', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 32, 'gem_font', '(LEFT) Restaurant Scene', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 64, 'gem_font', '(RIGHT) Heist Scene', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 96, 'gem_font', '(DOWN) Airstrip Scene', 16).setOrigin(0.5);
 
         // create input
         cursors = this.input.keyboard.createCursorKeys();
