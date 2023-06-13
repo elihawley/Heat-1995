@@ -22,7 +22,7 @@ class AirstripInstructions extends Phaser.Scene {
     create() {
         // add title text
         this.add.bitmapText(CENTER_X, CENTER_Y - 64, 'gem_font', 'AIRSTRIP SCENE', 32).setOrigin(0.5);
-        this.add.bitmapText(CENTER_X, CENTER_Y, 'gem_font', 'Fight in the darkness', 32).setOrigin(0.5);
+        this.add.bitmapText(CENTER_X, CENTER_Y - 32, 'gem_font', 'Fight in the darkness', 32).setOrigin(0.5);
         this.add.bitmapText(CENTER_X, CENTER_Y + 32, 'gem_font', 'Use arrow keys to move and SPACE to shoot', 16).setOrigin(0.5);
         this.add.bitmapText(CENTER_X, CENTER_Y + 64, 'gem_font', 'Hold ESC to leave game.', 16).setOrigin(0.5);
         this.add.bitmapText(CENTER_X, CENTER_Y + 96, 'gem_font', 'Press SPACE to start', 16).setOrigin(0.5);
