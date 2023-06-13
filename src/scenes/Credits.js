@@ -17,10 +17,10 @@ class Credits extends Phaser.Scene {
 
         this.add.bitmapText(centerX, centerY - 64, 'gem_font', 'CREDITS', 32).setOrigin(0.5);
         this.add.bitmapText(centerX, centerY - 32, 'gem_font', 'Press (C) to return', 32).setOrigin(0.5);
-        this.add.bitmapText(centerX, centerY, 'gem_font', 'Developer: Elia Hawley', 16).setOrigin(0.5);
-        this.add.bitmapText(centerX, centerY + 32, 'gem_font', 'Images: ShatteredReality, Asesprite, GIMP', 16).setOrigin(0.5);
-        this.add.bitmapText(centerX, centerY + 64, 'gem_font', 'Music: LunaLucid', 16).setOrigin(0.5);
-        this.add.bitmapText(centerX, centerY + 96, 'gem_font', 'SFX: jsfxr, Audacity', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 32, 'gem_font', 'Developer: Elia Hawley', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 64, 'gem_font', 'Images: ShatteredReality, Asesprite, GIMP', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 96, 'gem_font', 'Music: LunaLucid', 16).setOrigin(0.5);
+        this.add.bitmapText(centerX, centerY + 128, 'gem_font', 'SFX: jsfxr, Audacity', 16).setOrigin(0.5);
 
         keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C)
     }
